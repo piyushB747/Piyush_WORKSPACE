@@ -1,0 +1,332 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+  	
+
+	
+  <div th:fragment="javaaddData">
+	  
+	    	
+ <style>
+/* Style for the "Save" button */
+#updateButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  color: white;
+  background-color: #58e0bc;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for the button */
+#updateButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+/* Style for row1 container */
+.row1addJavaProgressIdClass{
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    margin-top: 5px;
+}
+
+/* Style for label */
+.labelIdrow1class {
+    font-size: 16px;
+    color: #333;
+    padding-left: 8px;
+    font-weight: bold;
+    margin-right: 8px; /* Add margin between label and text box */
+}
+
+/* Style for text box */
+.textBoxClass {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 200px;
+    height: 10px;
+}
+
+
+</style>
+	  
+	  
+	  	   <div class="addJavaProgressclass" id="addJavaProgressId" style="display: none;">
+				 dfdg
+	  	   </div>
+	  	   
+	  	   
+	  	   
+	  	   
+	  	   
+<script th:inline="javascript">
+	 
+	 
+ function addJavaProgress(){
+		 setDisplayOfContent("addJavaProgressId","block");
+		 setInnerHtml("addJavaProgressId");
+		 
+	const containerDivMain = document.getElementById('addJavaProgressId'); // Replace 'yourContainerId' with your actual container ID
+	const containerDiv = document.createElement('div'); // Replace 'yourContainerId' with your actual container ID
+    containerDiv.id = 'addProgressDivId';
+    containerDiv.classList.add('addProgressDivIdClass', 'additionalClassAdd1');
+    containerDivMain.appendChild(containerDiv);
+    
+    const row1 = document.createElement('div');
+    row1.id = 'row1-addJavaProgressId';
+    row1.classList.add('row1addJavaProgressIdClass', 'additionalClass1');
+
+
+    const label = document.createElement('label');
+    label.textContent = 'Chapter'; // Set the label text as needed
+    label.id = 'labelId'; // Add an ID to the label
+    label.classList.add('labelIdrow1class'); // Add a class to the label
+
+    const textBox = document.createElement('input');
+    textBox.type = 'text'; // Set the input type as needed
+    textBox.placeholder = 'Enter your Chapter'; // Set the placeholder text as needed
+    textBox.id = 'chapter-textBox'; // Add an ID to the text box
+    textBox.classList.add('textBoxClass'); // Add a class to the text box
+
+    row1.appendChild(label);
+    row1.appendChild(textBox);
+
+
+    const label2 = document.createElement('label');
+    label2.textContent = 'Topic'; // Set the label text as needed
+    label2.id = 'labelId'; // Add an ID to the label
+    label2.classList.add('labelIdrow1class'); // Add a class to the label
+
+    const textBox2 = document.createElement('input');
+    textBox2.type = 'text'; // Set the input type as needed
+    textBox2.placeholder = 'Enter your Topic'; // Set the placeholder text as needed
+    textBox2.id = 'topic-textBox'; // Add an ID to the text box
+    textBox2.classList.add('textBoxClass'); // Add a class to the text box
+
+    row1.appendChild(label2);
+    row1.appendChild(textBox2);
+
+    const label3 = document.createElement('label');
+    label3.textContent = 'OverAll'; // Set the label text as needed
+    label3.id = 'labelId'; // Add an ID to the label
+    label3.classList.add('labelIdrow1class'); // Add a class to the label
+
+    const textBox3 = document.createElement('input');
+    textBox3.type = 'text'; // Set the input type as needed
+    textBox3.placeholder = 'Enter your OverAll'; // Set the placeholder text as needed
+    textBox3.id = 'overall-textBox'; // Add an ID to the text box
+    textBox3.classList.add('textBoxClass'); // Add a class to the text box
+
+    row1.appendChild(label3);
+    row1.appendChild(textBox3);
+    
+    const row2 = document.createElement('div');
+    row2.id = 'row2-addJavaProgressId';
+    row2.classList.add('row1addJavaProgressIdClass', 'additionalClass1');
+   
+    const label4 = document.createElement('label');
+    label4.textContent = 'Mode1'; // Set the label text as needed
+    label4.id = 'labelId'; // Add an ID to the label
+    label4.classList.add('labelIdrow1class'); // Add a class to the label
+
+    const textBox4 = document.createElement('input');
+    textBox4.type = 'text'; // Set the input type as needed
+    textBox4.placeholder = 'Enter your Mode'; // Set the placeholder text as needed
+    textBox4.id = 'mode1-textBox'; // Add an ID to the text box
+    textBox4.classList.add('textBoxClass'); // Add a class to the text box
+
+    row2.appendChild(label4);
+    row2.appendChild(textBox4);
+    
+    const label5 = document.createElement('label');
+    label5.textContent = 'Mode2'; // Set the label text as needed
+    label5.id = 'labelId'; // Add an ID to the label
+    label5.classList.add('labelIdrow1class'); // Add a class to the label
+
+    const textBox5 = document.createElement('input');
+    textBox5.type = 'text'; // Set the input type as needed
+    textBox5.placeholder = 'Enter your Mode2'; // Set the placeholder text as needed
+    textBox5.id = 'mode2-textBox'; // Add an ID to the text box
+    textBox5.classList.add('textBoxClass'); // Add a class to the text box
+
+    row2.appendChild(label5);
+    row2.appendChild(textBox5);
+  
+    const row3 = document.createElement('div');
+    row3.id = 'row3-addJavaProgressId';
+    row3.classList.add('row1addJavaProgressIdClass', 'additionalClass1');
+    
+    const label6 = document.createElement('label');
+    label6.textContent = 'Clear1'; // Set the label text as needed
+    label6.id = 'labelId'; // Add an ID to the label
+    label6.classList.add('labelIdrow1class'); // Add a class to the label
+
+    const textBox6 = document.createElement('input');
+    textBox6.type = 'text'; // Set the input type as needed
+    textBox6.placeholder = 'Enter your Clear1'; // Set the placeholder text as needed
+    textBox6.id = 'clear1-textBox'; // Add an ID to the text box
+    textBox6.classList.add('textBoxClass'); // Add a class to the text box
+
+    row3.appendChild(label6);
+    row3.appendChild(textBox6);
+    
+    const label7 = document.createElement('label');
+    label7.textContent = 'Clear2'; // Set the label text as needed
+    label7.id = 'labelId'; // Add an ID to the label
+    label7.classList.add('labelIdrow1class'); // Add a class to the label
+
+    const textBox7 = document.createElement('input');
+    textBox7.type = 'text'; // Set the input type as needed
+    textBox7.placeholder = 'Enter your Clear2'; // Set the placeholder text as needed
+    textBox7.id = 'clear2-textBox'; // Add an ID to the text box
+    textBox7.classList.add('textBoxClass'); // Add a class to the text box
+
+    row3.appendChild(label7);
+    row3.appendChild(textBox7);
+
+    const label8 = document.createElement('label');
+    label8.textContent = 'Clear3'; // Set the label text as needed
+    label8.id = 'labelId'; // Add an ID to the label
+    label8.classList.add('labelIdrow1class'); // Add a class to the label
+
+    const textBox8 = document.createElement('input');
+    textBox8.type = 'text'; // Set the input type as needed
+    textBox8.placeholder = 'Enter your Clear2'; // Set the placeholder text as needed
+    textBox8.id = 'clear3-textBox'; // Add an ID to the text box
+    textBox8.classList.add('textBoxClass'); // Add a class to the text box
+
+    row3.appendChild(label8);
+    row3.appendChild(textBox8);
+
+
+    containerDiv.appendChild(row1);
+    containerDiv.appendChild(row2);
+    containerDiv.appendChild(row3);
+    
+     	const saveButton = document.createElement('button');
+        saveButton.type = 'button';
+        saveButton.id = 'updateButton';
+        saveButton.classList.add('update-button-class'); // Add a class to the button
+        saveButton.textContent = 'UPDATE';
+        saveButton.addEventListener('click', function() {
+              event.preventDefault(); // Prevent the default form submission
+             saveQuestionChanges();
+          });
+      
+      
+      containerDiv.appendChild(saveButton);  
+  }
+	  
+	  function saveQuestionChanges(){
+		 let chapter = document.getElementById('chapter-textBox').value;
+		 let topic = document.getElementById('topic-textBox').value;
+		 let mode1 = document.getElementById('mode1-textBox').value;
+		 let mode2 = document.getElementById('mode2-textBox').value;
+		 let clear1 = document.getElementById('clear1-textBox').value;
+		 let clear2 = document.getElementById('clear2-textBox').value;
+		 let clear3 = document.getElementById('clear3-textBox').value;
+		 let overAll = document.getElementById('overall-textBox').value;
+		 
+		 
+		   console.log('Chapter:', chapter);
+		    console.log('Topic:', topic);
+		    console.log('Mode 1:', mode1);
+		    console.log('Mode 2:', mode2);
+		    console.log('Clear 1:', clear1);
+		    console.log('Clear 2:', clear2);
+		    console.log('Clear 3:', clear3);
+		    console.log('Overall:', overAll);
+		    
+				
+                 // Prepare request body
+    const requestBody = {
+        chatpterJDto:chapter,
+        topicJDto:topic,
+        mode1jDto:mode1,
+        mode2jDto: mode2,
+        clear1JDto:clear1,
+        clear2JDto:clear2,
+        clear3JDto:clear3,
+        overallJDto:overAll
+    };
+    
+    
+   //console.log("OPPORTUNITY "+JSON.stringify(requestBody));
+    // Fetch API request
+    fetch('/savedataforprogressjava', {
+        method: 'POST', // Change the method as needed
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    })
+        .then(async response => {
+            if (!response.ok) {
+                generateFadeNotification('Network response was not ok');
+                throw new Error('Network response was not ok');
+            }
+            const contentType = response.headers.get('content-type');
+            let data;
+            if (contentType && contentType.includes('application/json')) {
+                try {
+                    data = await response.json();
+                } catch (error) {
+                    generateFadeNotification('Error parsing JSON','error');
+                    throw new Error('Error parsing JSON');
+                }
+            } else {
+                try {
+                    data = await response.text();
+                } catch (error) {
+                    generateFadeNotification('Error parsing text','error');
+                    throw new Error('Error parsing text');
+                }
+            }
+            return data;
+        })
+        .then(data => {
+            if (typeof data === 'object') {
+                console.log(JSON.stringify(data)+"  YOUR DATA");
+
+                let message = data.message;
+                let messageType = data.messageType;
+                if(messageType === 'success'){
+				  setValuesBlank();	
+				}
+                generateFadeNotification(" "+message,messageType);
+            } else {
+                let jsonData = JSON.parse(data);
+                
+                
+                // Handle text data
+            }
+        })
+        .catch(error => {
+            generateFadeNotification('Fetch error:' + error,'error');
+            console.error('Fetch error:', error);
+        });
+	  }
+	  
+	  function setValuesBlank(){
+		 document.getElementById('chapter-textBox').value='';
+		 document.getElementById('topic-textBox').value='';
+		 document.getElementById('mode1-textBox').value='';
+		 document.getElementById('mode2-textBox').value='';
+		 document.getElementById('clear1-textBox').value='';
+		 document.getElementById('clear2-textBox').value='';
+		 document.getElementById('clear3-textBox').value='';
+		 document.getElementById('overall-textBox').value='';
+		 setInnerHtml("addJavaProgressId");
+	  }
+</script>
+
+ </div>
+
+</body>
+</html>

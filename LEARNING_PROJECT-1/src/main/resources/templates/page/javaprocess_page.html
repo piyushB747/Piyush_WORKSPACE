@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+	<title>Java Screen</title>
+	<!--<th:block th:replace="~{fragments/frag_mainheader :: header}"></div>-->
+
+<style th:inline="text">
+	
+   .motherdiv{
+	   margin:0px;
+	   padding:0px;
+	   font-family: maths;
+	   
+   }
+   /* Style for the back button */
+	
+	#backButton2 {
+	  background-color: #52d1ba;
+	  color: white;
+	  border: none;
+	  border-radius: 5px;
+	  cursor: pointer;
+	  font-size: 14px;
+	  transition: background-color 0.3s ease;
+	}
+   
+   .progressText{
+	   font-family: maths;
+	   font-weight: bold;
+	   font-size: 30px;
+   }
+</style>
+</head>
+
+<body>
+<form th:action="@{/}"  th:object="${dtoObject}" method="post">
+	
+ <div class="motherdiv">
+	        
+	        
+	           <div class="headerclass" id="headerid">
+				   
+						<span style="color: #077894;text-align: center;position: sticky;" class="progressText">Java Progress</span>
+						<button id="backButton2" onclick="preventAddJavaProgress(event)" style="float: right;">Add Progress</button>
+			   </div>
+			   
+			   <div class="notificationclass" id="myNotification" style="display:none;"></div>
+			   
+			   <div th:replace="~{fragments/fragjava_progress/frag_addProgressJava :: javaaddData}">
+				   
+			   </div>
+			   
+			   <div class="grahClass" id="graphid" style="display: none;">
+				   
+			   </div>
+			   
+			   <div th:replace="~{fragments/fragjava_progress/frag_javaProgress :: javaProgressDetails}">
+				   
+			   </div>
+			   
+			  
+		        <div th:replace="~{fragments/frag_common :: common}"></div>
+ </div>
+
+<script th:inline="javascript">
+	  	   
+
+	 
+ window.onload = functionMainOnLoad;
+
+
+function functionMainOnLoad(){
+	functionFetchJavaDetails();
+	
+}
+
+
+	    
+function preventAddJavaProgress(event) {
+           
+           
+            event.preventDefault(); 
+           let previousURL = document.referrer;
+          
+            if (previousURL) {
+                console.log('Previous URL:', previousURL);
+              //  window.location.href = previousURL; // Redirect to the previous URL
+            } else {
+                console.log('Previous URL information is not available.');
+            }
+            
+            addJavaProgress();
+                //history.back();
+}
+	
+</script>
+
+</form>
+</body>
+
+</html>

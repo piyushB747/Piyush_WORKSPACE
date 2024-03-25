@@ -1,0 +1,88 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<style th:inline="text">
+	
+	
+</style>
+	
+<body>
+  
+  <div th:fragment="common">
+	
+	
+	<style>
+		.notificationclass {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 20px;
+  color: whitesmoke;
+  font-family: cursive;
+  font-weight: bold;
+  border-radius: 6px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+		
+	</style>
+<script th:inline="javascript">
+	         
+	         
+				function setDisplayOfContent(elementId, displaySetting) {
+
+					let element = document.getElementById(elementId);
+					if (element) {
+						element.style.display = displaySetting; // Or any other suitable value like 'inline-block', 'table', etc.
+					}
+
+				}
+	     
+
+				function setInnerHtml(elementId) {
+
+					let element = document.getElementById(elementId);
+					if (element) {
+						element.innerHTML = '';
+					}
+
+				}	
+				
+				
+				function removeTheContent(elementId) {
+
+					let element = document.getElementById(elementId);
+					if (element) {
+						element.remove();
+					}
+
+				}	
+				
+				
+				function generateFadeNotification(notificationMessage,messageType){
+					console.log("PIYUSH" +notificationMessage+ "mes"+messageType);
+				  const notification = document.getElementById('myNotification');
+			      notification.textContent = notificationMessage;
+			      notification.style.display = 'block';
+			      notification.style.opacity = 1;
+					if(messageType === 'success'){
+						
+						    notification.style.backgroundColor  = '#0f8771';  // Set color for success message
+					}else if(messageType === 'error'){
+						console.log("PIYUSH" +notificationMessage+ "mes"+messageType);
+						    notification.style.backgroundColor  = '#e68eb4';  // Set color for success message
+
+					}
+					
+			      
+			      setTimeout(function() {
+			            notification.style.opacity = 0;
+			      }, 4000);
+            }
+</script>
+
+
+ </div>
+
+</body>
+</html>

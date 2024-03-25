@@ -1,0 +1,222 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+ <div th:fragment="javaProgressDetails">
+	  
+	    	
+	 <style>
+	
+	#resultsTableJavaDetails {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#resultsTableJavaDetails th, #resultsTableJavaDetails td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.thead-dark {
+    background-color: #58e0bc;
+    color: #fff;
+}
+
+#resultsTableJavaDetails th {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#resultsBody {
+    font-family: maths;
+}
+
+	</style>
+	  
+	  
+	  	   <div class="addJavaProgressDetailClass" id="addJavaProgressDetailsId" style="display: block;">
+				  <br>
+				  
+				  <table id="resultsTableJavaDetails" class="table table-striped table-bordered">
+                     <thead class="thead-dark fixed-header">
+                         <tr>
+                             <th style="color:black; font-size: 14px;">ID</th>
+                             <th style="color:black; font-size: 14px;">Chapter</th>
+                             <th style="color:black; font-size: 14px;">Topic</th>
+                             <th style="color:black; font-size: 14px;">Mode1</th>
+                             <th style="color:black; font-size: 14px;">Mode2</th>
+                             <th style="color:black; font-size: 14px;">Clear1</th>
+                             <th style="color:black; font-size: 14px;">Clear2</th>
+                             <th style="color:black; font-size: 14px;">Clear3</th>
+                             <th style="color:black; font-size: 14px;">Edit</th>
+                             
+                             <!--
+                             <th style="color:black; font-size: 14px;">Team Mail</th>
+                             <th style="color:black; font-size: 14px;">MSP Mail</th>
+                             <th style="color:black; font-size: 14px;">Customer Mail</th>
+                             -->
+                         </tr>
+                     </thead>
+                     <tbody id="resultsBody" style="font-family: Courier New;font-weight: bold;">
+                     </tbody>
+                 </table>
+                 
+	  	   </div>
+	  	   
+	  	   
+	  	   
+	  	   
+	  	   
+<script th:inline="javascript">
+
+function functionFetchJavaDetails(){
+	
+	  fetch('/fetchdetailofprogressjava', {
+        method: 'GET', // Change the method as needed
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(async response => {
+            if (!response.ok) {
+                generateFadeNotification('Network response was not ok');
+                throw new Error('Network response was not ok');
+            }
+            const contentType = response.headers.get('content-type');
+            let data;
+            if (contentType && contentType.includes('application/json')) {
+                try {
+                    data = await response.json();
+                } catch (error) {
+                    generateFadeNotification('Error parsing JSON','error');
+                    throw new Error('Error parsing JSON');
+                }
+            } else {
+                try {
+                    data = await response.text();
+                } catch (error) {
+                    generateFadeNotification('Error parsing text','error');
+                    throw new Error('Error parsing text');
+                }
+            }
+            return data;
+        })
+        .then(data => {
+            if (typeof data === 'object') {
+                console.log(JSON.stringify(data)+"  YOUR DATA");
+
+                let message = data.message;
+                let messageType = data.messageType;
+                if(messageType === 'success'){
+				  generateTableOfProgress(data.l_objList);	
+				}
+                generateFadeNotification(" "+message,messageType);
+            } else {
+                let jsonData = JSON.parse(data);
+                
+                
+                // Handle text data
+            }
+        })
+        .catch(error => {
+            generateFadeNotification('Fetch error:' + error,'error');
+            console.error('Fetch error:', error);
+        });
+}
+
+
+function generateTableOfProgress(jsonTableData){
+	   console.log(JSON.stringify(jsonTableData));
+	   
+	   const tableBody = document.getElementById('resultsBody');
+             
+             
+             jsonTableData.forEach(result => {
+                const row = document.createElement('tr');
+                    console.log(result.topicJDto);
+                    
+                    const idJ = document.createElement('td');
+                    idJ.textContent = result.idJ; // Access SiteId directly from the result object
+                    row.appendChild(idJ); 
+                    
+                    const topicJDto = document.createElement('td');
+                    topicJDto.textContent = result.topicJ; // Access SiteId directly from the result object
+                    row.appendChild(topicJDto); 
+                    
+                    const chatpterJDto = document.createElement('td');
+                        chatpterJDto.textContent = result.chatpterJ; // Access SiteId directly from the result object
+                        row.appendChild(chatpterJDto);
+                        
+                        const mode1jDto = document.createElement('td');
+                        mode1jDto.textContent = result.mode1j; // Access SiteId directly from the result object
+                        row.appendChild(mode1jDto);
+
+                        /*
+                        const question = document.createElement('td');
+                        var Question = result.Question;
+                        Question = Question.replace(/^'|'$/g, '');
+                        question.textContent = Question; // Access SiteId directly from the result object
+                        row.appendChild(question);
+                        */
+                        const ans = document.createElement('td');
+                        ans.textContent = result.mode2j; // Access SiteId directly from the result object
+                        row.appendChild(ans);
+                        
+                        const statename = document.createElement('td');
+                        statename.textContent = result.clear1J; // Access SiteId directly from the result object
+                        row.appendChild(statename);
+                        
+                        const escalateRm = document.createElement('td');
+                        escalateRm.textContent = result.clear3J; // Access SiteId directly from the result object
+                        row.appendChild(escalateRm);
+                          
+                          
+                        const overallJDto = document.createElement('td');
+                        overallJDto.textContent = result.overallJ; // Access SiteId directly from the result object
+                        row.appendChild(overallJDto);
+                   
+                        
+                        const buttonCell = document.createElement('td');
+                        const linkToEditQuestion = document.createElement('a');
+                        linkToEditQuestion.href = '#'; // Set the href attribute to '#' or the desired URL
+                        linkToEditQuestion.textContent = 'Edit'; // Set the text content of the anchor element
+                        linkToEditQuestion.classList.add('submitChecklistClass'); // Add a class to the anchor element
+                        linkToEditQuestion.id = 'submitChecklistId';
+                        linkToEditQuestion.addEventListener('click', function (event) {
+                               
+                                const tableContainer = document.getElementById("tableContainerId");
+                                if(tableContainer){
+                                     tableContainer.style.display = 'none'; // Or any other suitable value like 'inline-block', 'table', etc.
+                                }
+                                 const ideditcontainer = document.getElementById("ideditcontainer");
+                                if(ideditcontainer){
+                                     ideditcontainer.style.display = 'block'; // Or any other suitable value like 'inline-block', 'table', etc.
+                                }
+                                //setParametersToLocalStorage("editScreenOn","On");
+                                
+                                /*
+                                editEmailQuestAnsList(result.Question,result.Answer,
+                                            result.Customer,result.Role,
+                                            result.TeamMail,result.CustMail,
+                                            result.MspMail,result.Rule,
+                                            result.id,result.qid,result.aid,result.custid,
+                                            result.statename,
+                                            result.stateid,result.escalateRm,result.rmMail);    
+                                    */        
+                        });
+                        buttonCell.appendChild(linkToEditQuestion);
+                        row.appendChild(buttonCell);  
+                        
+                        
+
+                tableBody.appendChild(row);
+                 
+             });
+            
+}
+</script>
+
+ </div>
+
+</body>
+</html>
