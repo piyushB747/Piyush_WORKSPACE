@@ -23,7 +23,7 @@ public class EndpointSaveJavaProgress {
 
 	@Autowired
 	private ServiceEntityJavaScheduled serJavaScheduled;
-	
+	 
 	@PostMapping
 	public ResponseEntity<?> saveJavaProgressData(@RequestBody DtoJavaScheduledTask dto){
 		
